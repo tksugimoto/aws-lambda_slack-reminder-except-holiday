@@ -1,0 +1,9 @@
+
+.*
+!.gitignore
+!.gitkeep
+*.tfvars
+*.tfstate
+*.tfstate.backup
+/02_zip-index.js/*
+!/02_zip-index.js/.gitkeep

@@ -56,6 +56,7 @@ function postToSlack(text) {
 			channel: channel,
 			username: username,
 			icon_emoji: icon_emoji,
+			link_names: 1,
 			text: text
 		});
 

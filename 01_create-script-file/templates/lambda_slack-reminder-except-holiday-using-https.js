@@ -15,7 +15,7 @@ exports.handler = () => {
 		const today = new Date();
 		const hour = +9;
 		const min = today.getTimezoneOffset();
-		return JapaneseHolidays.shiftDate(today, /* year = */ 0, /* mon = */ 0, /* day = */ 0, hour, min);
+		return new Date(today.getTime() + (hour * 60 + min) * 60 * 1000);
 	})();
 
 	if (isWeekend(japaneseToday)) return;

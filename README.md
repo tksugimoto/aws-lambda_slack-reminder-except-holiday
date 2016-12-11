@@ -6,22 +6,32 @@
 	* Local
 		* node をインストール
 		* terraform をインストール
-		* npm モジュール [japanese-holidays](https://www.npmjs.com/package/japanese-holidays "https://www.npmjs.com/package/japanese-holidays") を `02_zip-index.js`ディレクトリにインストール
-			1. `cd 01_zip-index.js`
-			1. `npm install japanese-holidays`
 1. scriptをzip
-	1. `cd 01_zip-index.js`
+	1. `cd slack_reminder/zip-index.js`
+	1. npm モジュール [japanese-holidays](https://www.npmjs.com/package/japanese-holidays "https://www.npmjs.com/package/japanese-holidays") をインストール
+		* `npm install japanese-holidays`
 	1. `node_modules`ディレクトリと `index.js`ファイルを一緒にzip圧縮して `index.zip` にする
+1. リマインダーの設定
+	1. `cp 30_main.tf.sample 30_main.tf`
+	1. `30_main.tf` に設定を書き込む
+		* `module { ～～ }` が1ブロック（リマインダー）
+		* 必須設定
+			* `name`
+			* `reminder_text`
+			* `slack_webhook_url`
+			* `schedule_name`
+			* `schedule_expression`
+				* UTCなので日本時間から -9時間 
+				* 書式の詳細は→ [Rate または Cron を使用したスケジュール式 - AWS Lambda](http://docs.aws.amazon.com/ja_jp/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html "http://docs.aws.amazon.com/ja_jp/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html")
+		* オプション設定
+			* `channel` (投稿先チャンネル名)
+			* `username` (投稿表示名)
+			* `icon_emoji` (アイコン)
 1. lamnda関数を作成
-	1. `cd 02_create-lambda-function`
 	1. `cp terraform.tfvars.sample terraform.tfvars`
 	1. `terraform.tfvars` に設定を書き込む
 		* aws_access_key
 		* aws_secret_key
-		* region (lambda関数を置く)
-		* [**必須**] `reminder_text`
-		* [**必須**] `slack_webhook_url`
-		* [任意] `channel` (投稿先チャンネル名)
-		* [任意] `username` (投稿表示名)
-		* [任意] `icon_emoji` (アイコン)
+		* slack_webhook_url (一括設定する場合)
+	1. `terraform get`
 	1. `terraform apply`

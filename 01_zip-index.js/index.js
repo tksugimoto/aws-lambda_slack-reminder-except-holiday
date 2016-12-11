@@ -2,11 +2,11 @@ const https = require("https");
 const JapaneseHolidays = require("japanese-holidays");
 
 /**** 設定ここから ****/
-const reminder_text = "%reminder_text%";
-const slack_webhook_url = "%slack_webhook_url%";
-const channel = "%channel%";
-const username = "%username%";
-const icon_emoji = "%icon_emoji%";
+const reminder_text = process.env.reminder_text;
+const slack_webhook_url = process.env.slack_webhook_url;
+const channel = process.env.channel;
+const username = process.env.username;
+const icon_emoji = process.env.icon_emoji;
 /**** 設定ここまで ****/
 
 exports.handler = () => {

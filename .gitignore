@@ -5,5 +5,5 @@
 *.tfvars
 *.tfstate
 *.tfstate.backup
-/02_zip-index.js/*
-!/02_zip-index.js/.gitkeep
+/01_zip-index.js/*
+!/01_zip-index.js/index.js

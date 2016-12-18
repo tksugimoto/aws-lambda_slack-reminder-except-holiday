@@ -1,3 +1,5 @@
+"use strict";
+
 const https = require("https");
 const JapaneseHolidays = require("japanese-holidays");
 
@@ -38,7 +40,7 @@ const additional_holidays = additional_holidays_str.replace(/\s/g, "").split(","
 		const month = parseInt(RegExp.$1);
 		const startDay = parseInt(RegExp.$2);
 		const endDay = parseInt(RegExp.$3 || startDay);
-		for (var day = startDay; day <= endDay; day++) {
+		for (let day = startDay; day <= endDay; day++) {
 			array.push(`${month}/${day}`);
 		}
 	}

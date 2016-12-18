@@ -13,3 +13,6 @@ region = "ap-northeast-1"
 # Slack WebhookのURL
 # 一括設定したい場合用
 slack_webhook_url = "https://hooks.slack.com/services/*********/*********/************************"
+
+# 休みの追加（[,]区切り）
+additional_holidays = "12/29-31, 1/2, 1/3"

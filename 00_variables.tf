@@ -14,7 +14,7 @@ variable "slack_webhook_url" {
 	default = ""
 }
 
-# 休みの追加（[,]区切り）
+# 休みの追加（半角スペース[ ]区切り）
 variable "additional_holidays" {
 	default = ""
 }

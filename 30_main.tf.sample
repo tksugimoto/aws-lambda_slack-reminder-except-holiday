@@ -58,7 +58,7 @@ module "slack_reminder-3" {
 	slack_webhook_url = "https://hooks.slack.com/services/*********/*********/************************"
 
 	# 祝日追加
-	additional_holidays = "12/30, 1/2-7"
+	additional_holidays = "12/30 1/2-7"
 
 	# オプション設定（設定なし/空文字の場合はWebhookのデフォルト値）
 	# DM可

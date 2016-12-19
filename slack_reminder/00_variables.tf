@@ -18,7 +18,7 @@ variable "reminder_text" {}
 # Slack WebhookのURL
 variable "slack_webhook_url" {}
 
-# 休みの追加（[,]区切り）
+# 休みの追加（半角スペース[ ]区切り）
 variable "additional_holidays" {
 	default = ""
 }

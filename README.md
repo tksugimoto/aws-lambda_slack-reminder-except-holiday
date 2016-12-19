@@ -35,7 +35,7 @@
 		* slack_webhook_url (一括設定する場合)
 		* additional_holidays
 			* 休みの追加（年末年始やお盆など）
-			* カンマ[,]区切り
+			* 半角スペース[ ]区切り
 			* 同月内の場合のみハイフン[-]で範囲指定可能
 	1. `terraform get`
 	1. `terraform apply`

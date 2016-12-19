@@ -35,7 +35,7 @@ function isWeekend(japaneseDate) {
 	return day === sunday || day === saturday;
 }
 
-const additional_holidays = additional_holidays_str.replace(/\s/g, "").split(",").reduce((array, date_str) => {
+const additional_holidays = additional_holidays_str.trim().split(/\s+/).reduce((array, date_str) => {
 	if (date_str.match(/(\d+)[/](\d+)(?:-(\d+))?/)) {
 		const month = parseInt(RegExp.$1);
 		const startDay = parseInt(RegExp.$2);

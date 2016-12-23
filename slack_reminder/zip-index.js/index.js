@@ -1,9 +1,12 @@
+"use strict";
+
 const https = require("https");
 const JapaneseHolidays = require("japanese-holidays");
 
 /**** 設定ここから ****/
 const reminder_text = process.env.reminder_text;
 const slack_webhook_url = process.env.slack_webhook_url;
+const additional_holidays_str = process.env.additional_holidays;
 const channel = process.env.channel;
 const username = process.env.username;
 const icon_emoji = process.env.icon_emoji;
@@ -19,6 +22,7 @@ exports.handler = () => {
 	})();
 
 	if (isWeekend(japaneseToday)) return;
+	if (isAdditionalHoliday(japaneseToday)) return;
 	if (isHoliday(japaneseToday)) return;
 
 	postToSlack(reminder_text);
@@ -29,6 +33,24 @@ function isWeekend(japaneseDate) {
 	const sunday = 0;
 	const saturday = 6;
 	return day === sunday || day === saturday;
+}
+
+const additional_holidays = additional_holidays_str.trim().split(/\s+/).reduce((array, date_str) => {
+	if (date_str.match(/(\d+)[/](\d+)(?:-(\d+))?/)) {
+		const month = parseInt(RegExp.$1);
+		const startDay = parseInt(RegExp.$2);
+		const endDay = parseInt(RegExp.$3 || startDay);
+		for (let day = startDay; day <= endDay; day++) {
+			array.push(`${month}/${day}`);
+		}
+	}
+	return array;
+}, []);
+function isAdditionalHoliday(japaneseDate) {
+	const targetDate = `${japaneseDate.getMonth() + 1}/${japaneseDate.getDate()}`;
+	return additional_holidays.some(date => {
+		return date === targetDate;
+	});
 }
 
 function isHoliday(japaneseDate) {

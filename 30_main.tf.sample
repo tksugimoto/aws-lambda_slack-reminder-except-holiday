@@ -12,6 +12,9 @@ module "slack_reminder-1" {
 	schedule_expression = "cron(0 23 * * ? *)"
 
 	slack_webhook_url = "${var.slack_webhook_url}"
+
+	# 祝日追加
+	additional_holidays = "${var.additional_holidays}"
 }
 
 module "slack_reminder-2" {
@@ -27,6 +30,9 @@ module "slack_reminder-2" {
 	schedule_expression = "cron(30 2 * * ? *)"
 
 	slack_webhook_url = "${var.slack_webhook_url}"
+
+	# 祝日追加
+	additional_holidays = "12/30-31 1/1-7"
 
 	# オプション設定（設定なし/空文字の場合はWebhookのデフォルト値）
 	channel = "#random"
@@ -50,6 +56,9 @@ module "slack_reminder-3" {
 
 	# 個別設定も可能
 	slack_webhook_url = "https://hooks.slack.com/services/*********/*********/************************"
+
+	# 祝日追加
+	additional_holidays = "12/27-31 1/1-10 ${var.additional_holidays}"
 
 	# オプション設定（設定なし/空文字の場合はWebhookのデフォルト値）
 	# DM可

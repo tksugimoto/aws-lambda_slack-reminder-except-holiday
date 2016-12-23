@@ -12,6 +12,7 @@ resource "aws_lambda_function" "reminder" {
 		variables = {
 			reminder_text = "${var.reminder_text}"
 			slack_webhook_url = "${var.slack_webhook_url}"
+			additional_holidays = "${var.additional_holidays}"
 			channel = "${var.channel}"
 			username = "${var.username}"
 			icon_emoji = "${var.icon_emoji}"

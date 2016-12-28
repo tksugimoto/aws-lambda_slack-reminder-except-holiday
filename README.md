@@ -2,6 +2,12 @@
 平日（祝日も除く）にSlackへリマインダーするAWS Lambda環境を作成（Terraform使用）  
 独自の休日（年末年始など）も設定可能
 
+## 仕組み
+1. AWS CloudWatch Eventsのスケジューラーを使って毎日定刻にLambda起動
+1. AWS LambdaからIncoming WebHooksを使ってSlackに投稿
+	* Lambda関数内で土日・祝日・独自定義休日の判定を行ない平日のみ投稿
+	* 祝日判定にはnpm モジュール [japanese-holidays](https://www.npmjs.com/package/japanese-holidays "https://www.npmjs.com/package/japanese-holidays") を使用
+
 ## 使い方
 1. 事前準備
 	* [Node.js](https://nodejs.org/ja/ "https://nodejs.org/ja/") をインストール

@@ -1,6 +1,6 @@
 # aws-lambda_slack-reminder-except-holiday
 平日（祝日も除く）にSlackへリマインダーするAWS Lambda環境を作成（Terraform使用）  
-独自定義の祝日（年末年始など）も設定可能
+独自の休日（年末年始など）も設定可能
 
 ## 使い方
 1. 事前準備

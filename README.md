@@ -50,7 +50,7 @@
 				* 書式の詳細は→ [Rate または Cron を使用したスケジュール式 - AWS Lambda](http://docs.aws.amazon.com/ja_jp/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html "http://docs.aws.amazon.com/ja_jp/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html")
 			* `additional_holidays`
 				* 休みの追加（年末年始やお盆など）
-				* `"${var.slack_webhook_url}"` にしておけば共通設定と同じ値
+				* `"${var.additional_holidays}"` にしておけば共通設定と同じ値
 				* 個別に設定/追加する場合は半角スペースで区切って設定/追加
 					* `"12/30-31 1/1-7"`
 					* `"12/27-31 1/1-10 ${var.additional_holidays}"`

@@ -13,12 +13,11 @@
 	* [Node.js](https://nodejs.org/ja/ "https://nodejs.org/ja/") をインストール
 	* [terraform](https://www.terraform.io/downloads.html "https://www.terraform.io/downloads.html") をインストール
 		* バージョン `0.7.12` 以降必須 （AWS Lambdaの環境変数への対応が必要）
-1. scriptをzip
+1. 依存 ライブラリのインストール
 	1. `slack_reminder/zip-index.js` ディレクトリに移動
 		* `cd slack_reminder/zip-index.js`
 	1. npm モジュール [japanese-holidays](https://www.npmjs.com/package/japanese-holidays "https://www.npmjs.com/package/japanese-holidays") をインストール
 		* `npm install japanese-holidays`
-	1. `node_modules`ディレクトリと `index.js`ファイルを一緒にzip圧縮して `index.zip` にする
 1. 共通設定
 	1. 共通設定ファイル `terraform.tfvars` を `terraform.tfvars.sample` から作る
 		* `cp terraform.tfvars.sample terraform.tfvars`

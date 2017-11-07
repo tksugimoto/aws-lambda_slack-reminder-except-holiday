@@ -1,3 +1,8 @@
+data "archive_file" "source_code" {
+  type        = "zip"
+  source_dir  = "${path.module}/src/"
+  output_path = "${path.module}/dist/index.zip"
+}
 
 resource "aws_lambda_function" "reminder" {
 	function_name = "${var.prefix}-${var.name}"
@@ -5,8 +10,8 @@ resource "aws_lambda_function" "reminder" {
 	runtime = "nodejs4.3"
 	handler = "index.handler"
 	timeout = 10
-	filename = "${path.module}/zip-index.js/index.zip"
-	source_code_hash = "${base64sha256(file("${path.module}/zip-index.js/index.zip"))}"
+	filename = "${path.module}/dist/index.zip"
+	source_code_hash = "${data.archive_file.source_code.output_base64sha256}"
 
 	environment {
 		variables = {

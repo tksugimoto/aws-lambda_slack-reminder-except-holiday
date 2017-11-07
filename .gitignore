@@ -5,6 +5,7 @@
 *.tfvars
 *.tfstate
 *.tfstate.backup
-/slack_reminder/zip-index.js/*
-!/slack_reminder/zip-index.js/index.js
+/slack_reminder/src/*
+!/slack_reminder/src/index.js
+/slack_reminder/dist/
 /30_main.tf

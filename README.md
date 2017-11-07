@@ -13,9 +13,9 @@
 	* [Node.js](https://nodejs.org/ja/ "https://nodejs.org/ja/") をインストール
 	* [terraform](https://www.terraform.io/downloads.html "https://www.terraform.io/downloads.html") をインストール
 		* バージョン `0.7.12` 以降必須 （AWS Lambdaの環境変数への対応が必要）
-1. 依存 ライブラリのインストール
-	1. `slack_reminder/zip-index.js` ディレクトリに移動
-		* `cd slack_reminder/zip-index.js`
+1. 依存ライブラリのインストール
+	1. `slack_reminder/src` ディレクトリに移動
+		* `cd slack_reminder/src`
 	1. npm モジュール [japanese-holidays](https://www.npmjs.com/package/japanese-holidays "https://www.npmjs.com/package/japanese-holidays") をインストール
 		* `npm install japanese-holidays`
 1. 共通設定

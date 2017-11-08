@@ -1,0 +1,15 @@
+{
+  "name": "slack-reminder-except-holiday",
+  "version": "1.0.0",
+  "description": "平日（祝日も除く）にSlackへリマインダーする",
+  "main": "index.js",
+  "dependencies": {
+    "japanese-holidays": "^1.0.6"
+  },
+  "author": "tksugimoto",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tksugimoto/aws-lambda_slack-reminder-except-holiday.git"
+  },
+  "license": "MIT"
+}

@@ -16,8 +16,13 @@
 1. 依存ライブラリのインストール
 	1. `slack_reminder/src` ディレクトリに移動
 		* `cd slack_reminder/src`
-	1. npm モジュール [japanese-holidays](https://www.npmjs.com/package/japanese-holidays "https://www.npmjs.com/package/japanese-holidays") をインストール
-		* `npm install japanese-holidays`
+	1. npm モジュール をインストール
+		* コマンド
+			```
+			npm install
+			```
+		* インストールされるモジュール
+			* [japanese-holidays](https://www.npmjs.com/package/japanese-holidays "https://www.npmjs.com/package/japanese-holidays") 
 1. 共通設定
 	1. 共通設定ファイル `terraform.tfvars` を `terraform.tfvars.sample` から作る
 		* `cp terraform.tfvars.sample terraform.tfvars`

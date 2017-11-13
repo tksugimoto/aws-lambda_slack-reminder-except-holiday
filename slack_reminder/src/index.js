@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-const https = require("https");
-const JapaneseHolidays = require("japanese-holidays");
+const https = require('https');
+const JapaneseHolidays = require('japanese-holidays');
 
 /**** 設定ここから ****/
 const reminder_text = process.env.reminder_text;
@@ -64,15 +64,15 @@ function postToSlack(text) {
 		const options = {
 			host,
 			path,
-			method: "POST",
+			method: 'POST',
 		};
 		const req = https.request(options, res => {
-			res.on("data", chunk => {
+			res.on('data', chunk => {
 				const statusCode = res.statusCode;
-				const result = statusCode === 200 ? "OK" : `NG(${statusCode})`;
+				const result = statusCode === 200 ? 'OK' : `NG(${statusCode})`;
 				console.log(`[${result}] ${chunk.toString()}`);
 			}).on('error', e => {
-				console.log("ERROR:" + e.stack);
+				console.log('ERROR:' + e.stack);
 			});
 		});
 

@@ -64,7 +64,7 @@ function postToSlack(text) {
 		const options = {
 			host,
 			path,
-			method: "POST"
+			method: "POST",
 		};
 		const req = https.request(options, res => {
 			res.on("data", chunk => {
@@ -81,7 +81,7 @@ function postToSlack(text) {
 			username,
 			icon_emoji,
 			link_names: 1,
-			text
+			text,
 		});
 
 		req.write(body);

@@ -1,5 +1,8 @@
 'use strict';
 
+const {
+    parse: parseUrl,
+} = require('url');
 const https = require('https');
 const JapaneseHolidays = require('japanese-holidays');
 
@@ -58,34 +61,28 @@ function isHoliday(japaneseDate) {
 }
 
 function postToSlack(text) {
-	if (slack_webhook_url.match(/^https:[/][/]([^/]+)(.*)$/)) {
-		const host = RegExp.$1;
-		const path = RegExp.$2;
-		const options = {
-			host,
-			path,
-			method: 'POST',
-		};
-		const req = https.request(options, res => {
-			res.on('data', chunk => {
-				const statusCode = res.statusCode;
-				const result = statusCode === 200 ? 'OK' : `NG(${statusCode})`;
-				console.log(`[${result}] ${chunk.toString()}`);
-			}).on('error', e => {
-				console.log('ERROR:' + e.stack);
-			});
+	const options = parseUrl(slack_webhook_url);
+	options.method = 'POST';
+
+	const req = https.request(options, res => {
+		res.on('data', chunk => {
+			const statusCode = res.statusCode;
+			const result = statusCode === 200 ? 'OK' : `NG(${statusCode})`;
+			console.log(`[${result}] ${chunk.toString()}`);
+		}).on('error', e => {
+			console.log('ERROR:' + e.stack);
 		});
+	});
 
-		const body = JSON.stringify({
-			channel,
-			username,
-			icon_emoji,
-			link_names: 1,
-			text,
-		});
+	const body = JSON.stringify({
+		channel,
+		username,
+		icon_emoji,
+		link_names: 1,
+		text,
+	});
 
-		req.write(body);
+	req.write(body);
 
-		req.end();
-	}
+	req.end();
 }

@@ -63,17 +63,7 @@ function isHoliday(japaneseDate) {
 function postToSlack(text) {
 	const options = parseUrl(slack_webhook_url);
 	options.method = 'POST';
-
-	const req = https.request(options, res => {
-		res.on('data', chunk => {
-			const statusCode = res.statusCode;
-			const result = statusCode === 200 ? 'OK' : `NG(${statusCode})`;
-			console.log(`[${result}] ${chunk.toString()}`);
-		}).on('error', e => {
-			console.log('ERROR:' + e.stack);
-		});
-	});
-
+	
 	const body = JSON.stringify({
 		channel,
 		username,
@@ -82,7 +72,14 @@ function postToSlack(text) {
 		text,
 	});
 
-	req.write(body);
-
-	req.end();
+	https.request(options, res => {
+		res.on('data', chunk => {
+			const statusCode = res.statusCode;
+			const result = statusCode === 200 ? 'OK' : `NG(${statusCode})`;
+			console.log(`[${result}] ${chunk.toString()}`);
+		}).on('error', e => {
+			console.log('ERROR:' + e.stack);
+		});
+	})
+	.end(body);
 }

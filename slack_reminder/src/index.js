@@ -7,12 +7,12 @@ const https = require('https');
 const JapaneseHolidays = require('japanese-holidays');
 
 /**** 設定ここから ****/
-const reminder_text = process.env.reminder_text;
-const slack_webhook_url = process.env.slack_webhook_url;
-const additional_holidays_str = process.env.additional_holidays;
+const reminderText = process.env.reminder_text;
+const slackWebhookUrl = process.env.slack_webhook_url;
+const additionalHolidaysStr = process.env.additional_holidays;
 const channel = process.env.channel;
 const username = process.env.username;
-const icon_emoji = process.env.icon_emoji;
+const iconEmoji = process.env.icon_emoji;
 /**** 設定ここまで ****/
 
 exports.handler = () => {
@@ -28,7 +28,7 @@ exports.handler = () => {
 	if (isAdditionalHoliday(japaneseToday)) return;
 	if (isHoliday(japaneseToday)) return;
 
-	postToSlack(reminder_text);
+	postToSlack(reminderText);
 };
 
 function isWeekend(japaneseDate) {
@@ -38,8 +38,8 @@ function isWeekend(japaneseDate) {
 	return day === sunday || day === saturday;
 }
 
-const additional_holidays = additional_holidays_str.trim().split(/\s+/).reduce((array, date_str) => {
-	if (date_str.match(/(\d+)[/](\d+)(?:-(\d+))?/)) {
+const additionalHolidays = additionalHolidaysStr.trim().split(/\s+/).reduce((array, dateStr) => {
+	if (dateStr.match(/(\d+)[/](\d+)(?:-(\d+))?/)) {
 		const month = parseInt(RegExp.$1);
 		const startDay = parseInt(RegExp.$2);
 		const endDay = parseInt(RegExp.$3 || startDay);
@@ -51,7 +51,7 @@ const additional_holidays = additional_holidays_str.trim().split(/\s+/).reduce((
 }, []);
 function isAdditionalHoliday(japaneseDate) {
 	const targetDate = `${japaneseDate.getMonth() + 1}/${japaneseDate.getDate()}`;
-	return additional_holidays.some(date => {
+	return additionalHolidays.some(date => {
 		return date === targetDate;
 	});
 }
@@ -61,13 +61,13 @@ function isHoliday(japaneseDate) {
 }
 
 function postToSlack(text) {
-	const options = parseUrl(slack_webhook_url);
+	const options = parseUrl(slackWebhookUrl);
 	options.method = 'POST';
 	
 	const body = JSON.stringify({
 		channel,
 		username,
-		icon_emoji,
+		icon_emoji: iconEmoji,
 		link_names: 1,
 		text,
 	});

@@ -49,6 +49,7 @@ const additionalHolidays = additionalHolidaysStr.trim().split(/\s+/).reduce((arr
 	}
 	return array;
 }, []);
+
 function isAdditionalHoliday(japaneseDate) {
 	const targetDate = `${japaneseDate.getMonth() + 1}/${japaneseDate.getDate()}`;
 	return additionalHolidays.some(date => {

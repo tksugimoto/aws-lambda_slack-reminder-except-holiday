@@ -17,12 +17,7 @@ const iconEmoji = process.env.icon_emoji;
 
 exports.handler = () => {
 
-	const japaneseToday = (() => {
-		const today = new Date();
-		const hour = +9;
-		const min = today.getTimezoneOffset();
-		return new Date(today.getTime() + (hour * 60 + min) * 60 * 1000);
-	})();
+	const japaneseToday = generateJapaneseToday();
 
 	if (isWeekend(japaneseToday)) return;
 	if (isAdditionalHoliday(japaneseToday)) return;
@@ -30,6 +25,13 @@ exports.handler = () => {
 
 	postToSlack(reminderText);
 };
+
+function generateJapaneseToday() {
+	const today = new Date();
+	const hour = +9;
+	const min = today.getTimezoneOffset();
+	return new Date(today.getTime() + (hour * 60 + min) * 60 * 1000);
+}
 
 function isWeekend(japaneseDate) {
 	const day = japaneseDate.getDay();

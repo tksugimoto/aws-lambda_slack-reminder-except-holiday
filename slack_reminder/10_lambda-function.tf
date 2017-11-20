@@ -7,7 +7,7 @@ data "archive_file" "source_code" {
 resource "aws_lambda_function" "reminder" {
 	function_name = "${var.prefix}-${var.name}"
 	role = "${var.iam_for_lambda_arn}"
-	runtime = "nodejs4.3"
+	runtime = "nodejs6.10"
 	handler = "index.handler"
 	timeout = 10
 	filename = "${path.module}/dist/index.zip"

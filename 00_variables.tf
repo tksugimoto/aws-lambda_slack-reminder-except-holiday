@@ -1,21 +1,25 @@
-# AWS APIキー変数設定
-variable "aws_access_key" {}
-
-variable "aws_secret_key" {}
-
-# 名前のPrefix
-variable "prefix" {}
-
-# リージョン
-variable "region" {}
-
-# Slack WebhookのURL
-# 一括設定したい場合用
-variable "slack_webhook_url" {
-  default = ""
+variable "aws_access_key" {
+  description = "AWSアクセスキーID"
 }
 
-# 休みの追加（半角スペース[ ]区切り）
+variable "aws_secret_key" {
+  description = "AWSシークレットアクセスキー"
+}
+
+variable "prefix" {
+  description = "名前のPrefix"
+}
+
+variable "region" {
+  description = "リージョン"
+}
+
+variable "slack_webhook_url" {
+  description = "Slack WebhookのURL（一括設定したい場合用）"
+  default     = ""
+}
+
 variable "additional_holidays" {
-  default = ""
+  description = "休みの追加（半角スペース[ ]区切り）"
+  default     = ""
 }

@@ -1,68 +1,67 @@
-
 module "slack_reminder-1" {
-	source = "./slack_reminder"
-	prefix = "${var.prefix}"
-	iam_for_lambda_arn = "${aws_iam_role.iam_for_lambda.arn}"
+  source             = "./slack_reminder"
+  prefix             = "${var.prefix}"
+  iam_for_lambda_arn = "${aws_iam_role.iam_for_lambda.arn}"
 
-	# ↓ ここから設定 ↓
-	name = "morning"
-	reminder_text = "おはようございます\n今日もよろしく:grinning:"
+  # ↓ ここから設定 ↓
+  name          = "morning"
+  reminder_text = "おはようございます\n今日もよろしく:grinning:"
 
-	schedule_name = "every_day_08-00am_JST"
-	schedule_expression = "cron(0 23 * * ? *)"
+  schedule_name       = "every_day_08-00am_JST"
+  schedule_expression = "cron(0 23 * * ? *)"
 
-	slack_webhook_url = "${var.slack_webhook_url}"
+  slack_webhook_url = "${var.slack_webhook_url}"
 
-	# 祝日追加
-	additional_holidays = "${var.additional_holidays}"
+  # 祝日追加
+  additional_holidays = "${var.additional_holidays}"
 }
 
 module "slack_reminder-2" {
-	source = "./slack_reminder"
-	prefix = "${var.prefix}"
-	iam_for_lambda_arn = "${aws_iam_role.iam_for_lambda.arn}"
+  source             = "./slack_reminder"
+  prefix             = "${var.prefix}"
+  iam_for_lambda_arn = "${aws_iam_role.iam_for_lambda.arn}"
 
-	# ↓ ここから設定 ↓
-	name = "lunch"
-	reminder_text = "そろそろお昼です"
+  # ↓ ここから設定 ↓
+  name          = "lunch"
+  reminder_text = "そろそろお昼です"
 
-	schedule_name = "every_day_11-30am_JST"
-	schedule_expression = "cron(30 2 * * ? *)"
+  schedule_name       = "every_day_11-30am_JST"
+  schedule_expression = "cron(30 2 * * ? *)"
 
-	slack_webhook_url = "${var.slack_webhook_url}"
+  slack_webhook_url = "${var.slack_webhook_url}"
 
-	# 祝日追加
-	additional_holidays = "12/30-31 1/1-7"
+  # 祝日追加
+  additional_holidays = "12/30-31 1/1-7"
 
-	# オプション設定（設定なし/空文字の場合はWebhookのデフォルト値）
-	channel = "#random"
-	username = "reminder bot"
-	icon_emoji = ":bento:"
+  # オプション設定（設定なし/空文字の場合はWebhookのデフォルト値）
+  channel    = "#random"
+  username   = "reminder bot"
+  icon_emoji = ":bento:"
 }
 
-
 module "slack_reminder-3" {
-	source = "./slack_reminder"
-	prefix = "${var.prefix}"
-	iam_for_lambda_arn = "${aws_iam_role.iam_for_lambda.arn}"
+  source             = "./slack_reminder"
+  prefix             = "${var.prefix}"
+  iam_for_lambda_arn = "${aws_iam_role.iam_for_lambda.arn}"
 
-	# ↓ ここから設定 ↓
-	name = "user-DM-test"
-	reminder_text = "ダイレクトメッセージも可能"
+  # ↓ ここから設定 ↓
+  name          = "user-DM-test"
+  reminder_text = "ダイレクトメッセージも可能"
 
-	# 1日1回ではなくてもOK
-	schedule_name = "every_half_hour"
-	schedule_expression = "cron(30 0/1 * * ? *)"
+  # 1日1回ではなくてもOK
+  schedule_name       = "every_half_hour"
+  schedule_expression = "cron(30 0/1 * * ? *)"
 
-	# 個別設定も可能
-	slack_webhook_url = "https://hooks.slack.com/services/*********/*********/************************"
+  # 個別設定も可能
+  slack_webhook_url = "https://hooks.slack.com/services/*********/*********/************************"
 
-	# 祝日追加
-	additional_holidays = "12/27-31 1/1-10 ${var.additional_holidays}"
+  # 祝日追加
+  additional_holidays = "12/27-31 1/1-10 ${var.additional_holidays}"
 
-	# オプション設定（設定なし/空文字の場合はWebhookのデフォルト値）
-	# DM可
-	channel = "@user_id"
-	username = "reminder bot"
-	icon_emoji = ""
+  # オプション設定（設定なし/空文字の場合はWebhookのデフォルト値）
+  # DM可
+  channel = "@user_id"
+
+  username   = "reminder bot"
+  icon_emoji = ""
 }

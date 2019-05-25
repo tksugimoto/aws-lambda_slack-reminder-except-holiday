@@ -38,8 +38,8 @@
 			* 半角スペース[ ]区切り
 			* 同月内の場合のみハイフン[-]で範囲指定可能
 1. リマインダーの設定（リマインダーを変更する場合はこの手順から）
-	1. 設定ファイル `30_main.tf` を `30_main.tf.sample` から作る
-		* `cp 30_main.tf.sample 30_main.tf`
+	1. 設定ファイル `30_main.tf` を `30_main.tf.example` から作る
+		* `cp 30_main.tf.example 30_main.tf`
 		* ※ `30_main.tf` はgit管理外
 	1. `30_main.tf` に設定を書き込む
 		* `module { ～～ }` が1ブロック（リマインダー）

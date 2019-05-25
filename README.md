@@ -24,7 +24,7 @@
 		* インストールされるモジュール
 			* [japanese-holidays](https://www.npmjs.com/package/japanese-holidays "https://www.npmjs.com/package/japanese-holidays") 
 1. 共通設定
-	1. 共通設定ファイル `terraform.tfvars` を `terraform.tfvars.example` から作る
+	1. 共通設定ファイル `terraform.tfvars` を [terraform.tfvars.example](./terraform.tfvars.example) から作る
 		* `cp terraform.tfvars.example terraform.tfvars`
 		* ※ `terraform.tfvars` はgit管理外
 	1. `terraform.tfvars` に設定を書き込む
@@ -38,7 +38,7 @@
 			* 半角スペース[ ]区切り
 			* 同月内の場合のみハイフン[-]で範囲指定可能
 1. リマインダーの設定（リマインダーを変更する場合はこの手順から）
-	1. 設定ファイル `30_main.tf` を `30_main.tf.example` から作る
+	1. 設定ファイル `30_main.tf` を [30_main.tf.example](./30_main.tf.example) から作る
 		* `cp 30_main.tf.example 30_main.tf`
 		* ※ `30_main.tf` はgit管理外
 	1. `30_main.tf` に設定を書き込む

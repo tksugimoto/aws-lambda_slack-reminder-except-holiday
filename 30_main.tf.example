@@ -7,8 +7,8 @@ module "slack_reminder-1" {
   name          = "morning"
   reminder_text = "おはようございます\n今日もよろしく:grinning:"
 
-  schedule_name       = "every_day_08-00am_JST"
-  schedule_expression = "cron(0 23 * * ? *)"
+  schedule_description = "every_day_08-00am_JST"
+  schedule_expression  = "cron(0 23 * * ? *)"
 
   slack_webhook_url = "${var.slack_webhook_url}"
 
@@ -25,8 +25,8 @@ module "slack_reminder-2" {
   name          = "lunch"
   reminder_text = "そろそろお昼です"
 
-  schedule_name       = "every_day_11-30am_JST"
-  schedule_expression = "cron(30 2 * * ? *)"
+  schedule_description = "every_day_11-30am_JST"
+  schedule_expression  = "cron(30 2 * * ? *)"
 
   slack_webhook_url = "${var.slack_webhook_url}"
 
@@ -49,8 +49,8 @@ module "slack_reminder-3" {
   reminder_text = "ダイレクトメッセージも可能"
 
   # 1日1回ではなくてもOK
-  schedule_name       = "every_half_hour"
-  schedule_expression = "cron(30 0/1 * * ? *)"
+  schedule_description = "every_half_hour"
+  schedule_expression  = "cron(30 0/1 * * ? *)"
 
   # 個別設定も可能
   slack_webhook_url = "https://hooks.slack.com/services/*********/*********/************************"

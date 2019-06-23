@@ -7,7 +7,7 @@ variable "iam_for_lambda_arn" {}
 variable "name" {}
 
 # スケジュール設定
-variable "schedule_name" {}
+variable "schedule_description" {}
 
 variable "schedule_expression" {}
 
